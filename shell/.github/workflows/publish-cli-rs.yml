@@ -87,7 +87,7 @@ jobs:
         run: echo "CLI_VERSION=$(cat crates/tauri-cli/metadata-v2.json | jq '."cli.js".version' -r)" >> $GITHUB_ENV
 
       - name: Publish release
-        uses: softprops/action-gh-release@50195ba7f6f93d1ac97ba8332a178e008ad176aa
+        uses: softprops/action-gh-release@5434409c2b6457c050f109d68b2547fcbf1db07b
         with:
           tag_name: tauri-cli-v${{ env.CLI_VERSION }}
           files: |
