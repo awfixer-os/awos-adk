@@ -83,9 +83,12 @@ jobs:
       - name: cargo login
         run: cargo login ${{ secrets.ORG_CRATES_IO_TOKEN }}
       - name: git config
+        env:
+          GIT_USER_NAME: ${{ github.event.pusher.name }}
+          GIT_USER_EMAIL: ${{ github.event.pusher.email }}
         run: |
-          git config --global user.name "${{ github.event.pusher.name }}"
-          git config --global user.email "${{ github.event.pusher.email }}"
+          git config --global user.name "$GIT_USER_NAME"
+          git config --global user.email "$GIT_USER_EMAIL"
 
       - name: install Linux dependencies
         run: |
